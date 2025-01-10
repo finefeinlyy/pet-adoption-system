@@ -4,26 +4,23 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const [animals, setAnimals] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); // สำหรับการค้นหา
+  const [searchTerm, setSearchTerm] = useState(""); 
 
-  // โหลดข้อมูลสัตว์เลี้ยง
   useEffect(() => {
     setAnimals(getAnimals());
   }, []);
 
-  // กรองข้อมูลสัตว์เลี้ยงตามการค้นหา
   const filteredAnimals = animals.filter(
     (animal) =>
       animal.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       animal.type.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // ฟังก์ชันรับอุปการะสัตว์
   const handleAdopt = (id) => {
     try {
       adoptAnimal(id);
       alert(`Animal with ID ${id} has been adopted!`);
-      setAnimals(getAnimals()); // โหลดข้อมูลใหม่
+      setAnimals(getAnimals()); 
     } catch (error) {
       alert(error.message);
     }
@@ -35,7 +32,7 @@ const Dashboard = () => {
         Welcome to Pet Adoption System !
       </h1>
 
-      {/* ช่องค้นหา */}
+      {/* Serch box */}
       <div className="flex justify-center mt-8 mb-8">
   <input
     type="text"
@@ -61,7 +58,7 @@ const Dashboard = () => {
   </Link>
 </div>
 
-      {/* ตารางแสดงสัตว์เลี้ยง */}
+      {/* Table */}
       <div className="overflow-x-auto mt-8">
         <table className="w-full bg-white shadow-lg rounded-lg">
           <thead className="bg-mustard text-burgundy">
@@ -90,7 +87,7 @@ const Dashboard = () => {
                   </Link>
                 </td>
 
-                {/* แสดงรูปภาพและชื่อสัตว์ */}
+                {/* Photo */}
                 <td className="px-4 py-2 flex items-center space-x-4">
                   <img
                     src={animal.image || "https://via.placeholder.com/50"}
