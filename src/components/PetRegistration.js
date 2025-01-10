@@ -10,7 +10,7 @@ const RegisterAnimal = () => {
     breed: "",
     gender: "",
     age: "",
-    image: null, // เพิ่ม field สำหรับเก็บรูปภาพ
+    image: null, 
   });
 
   const navigate = useNavigate();
@@ -21,15 +21,15 @@ const RegisterAnimal = () => {
   };
 
   const handleImageUpload = (e) => {
-    const file = e.target.files[0]; // ดึงไฟล์แรกจาก input
+    const file = e.target.files[0]; 
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setFormData({ ...formData, image: reader.result }); // เก็บ Base64
+      setFormData({ ...formData, image: reader.result }); 
     };
 
     if (file) {
-      reader.readAsDataURL(file); // อ่านไฟล์เป็น Base64
+      reader.readAsDataURL(file); 
     }
   };
 
@@ -43,7 +43,7 @@ const RegisterAnimal = () => {
         formData.breed,
         formData.gender,
         parseInt(formData.age),
-        formData.image // ส่งรูปภาพไปกับข้อมูล
+        formData.image 
       );
       alert("Animal registered successfully!");
       navigate("/");
@@ -134,7 +134,7 @@ const RegisterAnimal = () => {
               type="file"
               id="image"
               accept="image/*"
-              onChange={handleImageUpload} // เรียก handleImageUpload
+              onChange={handleImageUpload} 
               className="w-full px-4 py-2 border border-gray-300 rounded"
             />
           </div>
